@@ -3,7 +3,8 @@ import { SearchPanel } from "./search-panel"
 import axios from 'axios'
 import List from "./list"
 import * as qs from "qs"
-import { cleanObject } from "./../../utills/index"
+import { cleanObject, useMount } from "./../../utills/index"
+import { useDebounce } from "./../../utills/index"
 const  apiUrl = process.env.REACT_APP_API_URL
 export const ProjectListSceen = () =>{
     const [param, setParam] = useState({
@@ -12,14 +13,13 @@ export const ProjectListSceen = () =>{
     })
     const [list,setList] = useState([])
     const [users,setusers] = useState([])
+    const debouncedParam = useDebounce(param,2000)
     useEffect(()=>{
-      console.log(qs.stringify(cleanObject(param)));
-       axios(`${apiUrl}/project?${qs.stringify(cleanObject(param))}`).then(res=>{
-        console.log('res.data',res.data);
+       axios(`${apiUrl}/project?${qs.stringify(cleanObject(debouncedParam))}`).then(res=>{
         setList(res.data)
        })
-    },[param])
-  useEffect(()=>{
+    },[debouncedParam])
+  useMount(()=>{
     axios(`${apiUrl}/users`).then( response =>{
         console.log('response 用户名',response.data);
         if(response.statusText==="OK"){
@@ -27,7 +27,7 @@ export const ProjectListSceen = () =>{
             setusers(response.data)
         }
     })
-  },[])
+  })
     return <div>
     <SearchPanel users={users} param={param} setParam={setParam} />
     <List users={users} list={list} />

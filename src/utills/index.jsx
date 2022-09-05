@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 
 export const isFalsy = (value) => value ===0 ? false : !value
 export const cleanObject = (object) =>{
@@ -12,4 +13,20 @@ export const cleanObject = (object) =>{
       }
    })
    return result;
+}
+//Custom Hook 组件代码服用方案
+export const useMount =(callback) =>{
+     useEffect(()=>{
+      callback()
+     },[callback])
+}
+
+export const useDebounce = (value,delay)=>{
+   const [debouncedValue,setdebouncedValue] = useState(value)
+
+   useEffect(()=>{
+      const timeout = setTimeout(()=>setdebouncedValue(value),delay)
+      return ()=>clearTimeout(timeout)
+    },[value,delay])
+    return debouncedValue
 }
