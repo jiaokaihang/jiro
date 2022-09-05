@@ -31,30 +31,30 @@
         },
         {
             "id":2,
-            "name":"物流管理",
+            "name":"团购App",
             "personId":2,
-            "organization":"物流组",
+            "organization":"团购组",
             "created":1604989757139
         },
         {
             "id":3,
-            "name":"车辆管理",
+            "name":"物料管理系统",
             "personId":3,
             "organization":"物流组",
             "created":1604989757139
         },
         {
             "id":4,
-            "name":"新闻管理",
+            "name":"总部管理系统",
             "personId":4,
-            "organization":"物流组",
+            "organization":"总部组",
             "created":1604989757139
         },
         {
             "id":5,
-            "name":"人工管理",
+            "name":"送餐路线规划路线",
             "personId":5,
-            "organization":"物流组",
+            "organization":"送餐组",
             "created":1604989757139
         }
     ]
