@@ -32,7 +32,7 @@
         {
             "id":2,
             "name":"物流管理",
-            "personId":1,
+            "personId":2,
             "organization":"物流组",
             "created":1604989757139
         },

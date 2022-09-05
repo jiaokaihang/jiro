@@ -2,6 +2,8 @@ import { useState,useEffect } from "react"
 import { SearchPanel } from "./search-panel"
 import axios from 'axios'
 import List from "./list"
+import * as qs from "qs"
+import { cleanObject } from "./../../utills/index"
 const  apiUrl = process.env.REACT_APP_API_URL
 export const ProjectListSceen = () =>{
     const [param, setParam] = useState({
@@ -11,7 +13,8 @@ export const ProjectListSceen = () =>{
     const [list,setList] = useState([])
     const [users,setusers] = useState([])
     useEffect(()=>{
-       axios(`${apiUrl}/project`).then(res=>{
+      console.log(qs.stringify(cleanObject(param)));
+       axios(`${apiUrl}/project?${qs.stringify(cleanObject(param))}`).then(res=>{
         console.log('res.data',res.data);
         setList(res.data)
        })
