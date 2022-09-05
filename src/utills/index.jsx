@@ -18,14 +18,17 @@ export const cleanObject = (object) =>{
 export const useMount =(callback) =>{
      useEffect(()=>{
       callback()
-     },[callback])
+     },[])
 }
 
 export const useDebounce = (value,delay)=>{
+   //设置一个变量debouncedValue
    const [debouncedValue,setdebouncedValue] = useState(value)
 
    useEffect(()=>{
+    //每次在value变化以后，都会设置一个定时器
       const timeout = setTimeout(()=>setdebouncedValue(value),delay)
+    //每次在上一个useEffect处理完以后在运行
       return ()=>clearTimeout(timeout)
     },[value,delay])
     return debouncedValue

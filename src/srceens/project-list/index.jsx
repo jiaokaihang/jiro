@@ -2,7 +2,7 @@ import { useState,useEffect } from "react"
 import { SearchPanel } from "./search-panel"
 import axios from 'axios'
 import List from "./list"
-import * as qs from "qs"
+import qs from "qs"
 import { cleanObject, useMount } from "./../../utills/index"
 import { useDebounce } from "./../../utills/index"
 const  apiUrl = process.env.REACT_APP_API_URL
