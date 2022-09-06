@@ -1,5 +1,24 @@
 import React from "react"
-export const SearchPanel = ({users,param,setParam}) => {
+
+export interface User {
+    id:string;
+    name:string;
+    email:string;
+    title:string;
+    organization:string;
+}
+
+interface SearchPanelProps {
+    users: User[],  //需要给user设置类型
+    param: {
+      name: string;
+      personId: string
+    },
+    setParam: (param: SearchPanelProps['param']) => void;
+  }
+  
+
+export const SearchPanel = ({users,param,setParam}:SearchPanelProps) => {
     return <form>
         <div>
             <input type="text" value={param.name} onChange={evt => setParam({
